@@ -7,15 +7,58 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+   
+    
+    
 
     var window: UIWindow?
-
+ 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let hendled = GIDSignIn.sharedInstance().handle(url,
+                                                        sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                        annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        return hendled
+    }
+    
+    
+    
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        if error != nil {
+//            print("Failed to Sign in to Google:", error)
+//            return
+//        }
+//        print("Successfully Logged into Google", user)
+//
+//        guard let idToken = user.authentication.idToken else {return}
+//        guard let accessToken = user.authentication.accessToken else {return}
+//
+//        let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+//        Auth.auth().signIn(with: credentials) { (user, error) in
+//            if error != nil {
+//                print("Failed to Signin to Google with credintials", error!)
+//            }
+//
+//        }
+//
+//
+//    }
+    
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+//        GIDSignIn.sharedInstance().delegate = self
+        
         return true
     }
 
