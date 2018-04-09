@@ -19,6 +19,7 @@ class RegisterViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDele
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
+    let googleButton = GIDSignInButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class RegisterViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDele
     }
 
     func createGoogleButton(){
-        let googleButton = GIDSignInButton()
+        
         googleButton.frame = CGRect(x: -4, y: 262, width: view.frame.width + 10, height: 40)
         view.addSubview(googleButton)
         
@@ -42,9 +43,13 @@ class RegisterViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDele
         
     }
     
+    
+   
+    
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-        SVProgressHUD.show()
+        
         if error != nil {
             print("Failed to Sign in to Google:", error)
             return

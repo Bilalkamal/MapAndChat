@@ -16,7 +16,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
-    
+     let googleButton = GIDSignInButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
 
     
     func createGoogleButton(){
-        let googleButton = GIDSignInButton()
+       
         googleButton.frame = CGRect(x: -4, y: 262, width: view.frame.width + 10, height: 40)
         view.addSubview(googleButton)
         
@@ -36,7 +36,12 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
         GIDSignIn.sharedInstance().delegate = self
         
         
+        
     }
+    
+    
+    
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         SVProgressHUD.show()
         if error != nil {

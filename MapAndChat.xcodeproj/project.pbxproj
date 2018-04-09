@@ -16,6 +16,7 @@
 		9C77D6912076C1FB00718F81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C77D68F2076C1FB00718F81 /* Main.storyboard */; };
 		9C77D6932076C1FB00718F81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C77D6922076C1FB00718F81 /* Assets.xcassets */; };
 		9C77D6962076C1FB00718F81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C77D6942076C1FB00718F81 /* LaunchScreen.storyboard */; };
+		9C83D9F8207A16990067B9B0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83D9F7207A16990067B9B0 /* MapViewController.swift */; };
 		9CA400202078E61600BA2803 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CA4001F2078E61600BA2803 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		9C77D6922076C1FB00718F81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C77D6952076C1FB00718F81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C77D6972076C1FB00718F81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C83D9F7207A16990067B9B0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9CA4001F2078E61600BA2803 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C98C241AD5DC71BCCD90E0DE /* Pods_MapAndChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapAndChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 				9C0CFAD32077BEBB00AB4C03 /* RegisterViewController.swift */,
 				9C0CFAD52077BEC800AB4C03 /* LoginViewController.swift */,
 				9C0CFAD92077C3B200AB4C03 /* MainViewController.swift */,
+				9C83D9F7207A16990067B9B0 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -248,12 +251,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MapAndChat/Pods-MapAndChat-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
@@ -270,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C0CFAD62077BEC800AB4C03 /* LoginViewController.swift in Sources */,
+				9C83D9F8207A16990067B9B0 /* MapViewController.swift in Sources */,
 				9C0CFAD42077BEBB00AB4C03 /* RegisterViewController.swift in Sources */,
 				9C77D68E2076C1FB00718F81 /* WelcomeViewController.swift in Sources */,
 				9C77D68C2076C1FB00718F81 /* AppDelegate.swift in Sources */,

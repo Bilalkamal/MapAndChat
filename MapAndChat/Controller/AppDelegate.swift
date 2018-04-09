@@ -9,11 +9,15 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import GoogleMaps
+import GooglePlaces
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
    
+    
+    let googleApiKey = "AIzaSyBy_Q9eU9hVhfaz6gBqg89A8o_D45CYWPQ"
     
     
 
@@ -25,31 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                         annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         return hendled
     }
-    
-    
-    
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//        if error != nil {
-//            print("Failed to Sign in to Google:", error)
-//            return
-//        }
-//        print("Successfully Logged into Google", user)
-//
-//        guard let idToken = user.authentication.idToken else {return}
-//        guard let accessToken = user.authentication.accessToken else {return}
-//
-//        let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
-//        Auth.auth().signIn(with: credentials) { (user, error) in
-//            if error != nil {
-//                print("Failed to Signin to Google with credintials", error!)
-//            }
-//
-//        }
-//
-//
-//    }
-    
-    
+
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -57,7 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
 
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-//        GIDSignIn.sharedInstance().delegate = self
+
+        GMSServices.provideAPIKey(googleApiKey)
+        GMSPlacesClient.provideAPIKey(googleApiKey)
+        
         
         return true
     }
