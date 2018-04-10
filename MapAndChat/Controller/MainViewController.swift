@@ -8,7 +8,8 @@
 
 import UIKit
 import Firebase
-
+import GoogleSignIn
+import SVProgressHUD
 
 class MainViewController: UIViewController {
 
@@ -31,11 +32,24 @@ class MainViewController: UIViewController {
     @IBAction func logoutPressed(_ sender: UIButton) {
         
         do {
+            SVProgressHUD.show()
             try Auth.auth().signOut()
-            self.navigationController?.popToRootViewController(animated: true)
+            
+            GIDSignIn.sharedInstance().signOut()
+            
+            
         }catch{
             print("Failed to Sign out", error)
+            SVProgressHUD.dismiss()
         }
+        
+        guard (navigationController?.popToRootViewController(animated: true)) != nil else{
+           
+            SVProgressHUD.dismiss()
+            print("No View Controllers to Pop off")
+            return
+        }
+        SVProgressHUD.dismiss()
         
     }
     

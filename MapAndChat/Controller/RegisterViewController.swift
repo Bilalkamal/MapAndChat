@@ -41,11 +41,8 @@ class RegisterViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDele
         GIDSignIn.sharedInstance().delegate = self
         
         
+        
     }
-    
-    
-   
-    
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
@@ -54,13 +51,14 @@ class RegisterViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDele
             print("Failed to Sign in to Google:", error)
             return
         }
-        
+        SVProgressHUD.show()
         print("Successfully Logged into Google", user)
         
         guard let idToken = user.authentication.idToken else {return}
         guard let accessToken = user.authentication.accessToken else {return}
         
         let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+        
         Auth.auth().signIn(with: credentials) { (user, error) in
             if error != nil {
                 print("Failed to Signin to Google with credintials", error!)

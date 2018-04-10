@@ -12,8 +12,10 @@ import GooglePlaces
 import GooglePlacePicker
 
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UISearchControllerDelegate, UISearchBarDelegate {
 
+    
+    // MARK:- Setting Up IBOutlets and Variables
     
     
     @IBOutlet weak var locationLabel: UILabel!
@@ -21,26 +23,25 @@ class MapViewController: UIViewController {
     @IBOutlet weak var addressView: UIView!
     
     @IBOutlet var infoView: UIView!
-    @IBOutlet weak var placeImage: UIImageView!
-    @IBOutlet weak var placeAddress: UILabel!
-    @IBOutlet weak var placeName: UILabel!
-    @IBOutlet weak var placePhone: UILabel!
+    @IBOutlet weak var placeImageView: UIImageView!
+    @IBOutlet weak var placeAddressLabel: UILabel!
+    @IBOutlet weak var placeNameLabel: UILabel!
+    @IBOutlet weak var placePhoneLabel: UILabel!
     
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
-    var currentLocation : GMSPlace? = nil
-    var effect:UIVisualEffect!
+    var currentLocation : GMSPlace?
     var currentLocationImage : UIImage?
-    var finalPhoneNumber = ""
+    var finalPhoneNumber : String? = ""
     
     
     private let locationManager = CLLocationManager()
     
+   
     
-    
-    
+    // MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,82 +49,24 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
 
         setupGoogleSearch()
-        
 
-        
         infoView.layer.cornerRadius = 5
 
         addressView.isHidden = true
         
-        
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.longPressFunction))
-        placePhone.isUserInteractionEnabled = true
-        placePhone.addGestureRecognizer(longPress)
-        
-    }
-    func callNumber(){
-        
-        if let number = URL(string: "tel://" + finalPhoneNumber){
-            UIApplication.shared.open(number, options: [:], completionHandler: nil)
-        }
-        
-        
-    }
-    
-    @objc func longPressFunction(sender:UITapGestureRecognizer) {
-        
-        if placePhone.text != nil {
-            var trimmedPhoneNumber = placePhone.text
-            
-            trimmedPhoneNumber = trimmedPhoneNumber!.components(separatedBy: .whitespaces).joined()
-          
-            if let phoneNumber = trimmedPhoneNumber {
-                
-                finalPhoneNumber = phoneNumber
-                callNumber()
-                
-            }else { return }
-          
-              
-            
-            
-        }
-        
-        
-       
-    }
-    
-   
-    
-    @IBAction func infoButtonPressed(_ sender: UIButton) {
-        
-        placeImage.image = currentLocationImage
-        placeName.text = currentLocation?.name
-        placeAddress.text = currentLocation?.formattedAddress
-        
-        if let placePhoneNumber = currentLocation?.phoneNumber {
-            placePhone.text = placePhoneNumber
-            
-        }else {
-            placePhone.text = "No Phone Available"
-        }
-        
-        
-         self.view.addSubview(infoView)
-        infoView.center = self.view.center
-        
-        
-        
-        
-    }
-    @IBAction func dismissPressed(_ sender: UIButton) {
-        self.infoView.removeFromSuperview()
+        placePhoneLabel.isUserInteractionEnabled = true
+        placePhoneLabel.addGestureRecognizer(longPress)
         
     }
     
     
-
+  
     
+    
+    
+    
+    // MARK:- Setting Up the Buttons and View
     
     func setupGoogleSearch(){
         resultsViewController = GMSAutocompleteResultsViewController()
@@ -132,19 +75,118 @@ class MapViewController: UIViewController {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         
-      
+        
         searchController?.searchBar.sizeToFit()
         navigationItem.titleView = searchController?.searchBar
         
-     
+        
         definesPresentationContext = true
         
         searchController?.hidesNavigationBarDuringPresentation = false
+        
+        
+    }
+
+    
+    
+   
+    
+   
+    
+   
+    // MARK:- Action Buttons
+    
+    @IBAction func infoButtonPressed(_ sender: UIButton) {
+        placeImageView.image = #imageLiteral(resourceName: "No image Available")
+        
+        if currentLocationImage != nil {
+            placeImageView.image = currentLocationImage
+        }
+        else {
+            placeImageView.image = #imageLiteral(resourceName: "No image Available")
+        }
+        
+        
+        placeNameLabel.text = currentLocation?.name
+        placeAddressLabel.text = currentLocation?.formattedAddress
+
+        if currentLocation?.phoneNumber != nil {
+            if currentLocation!.phoneNumber!.count > 8 {
+                placePhoneLabel.text = currentLocation?.phoneNumber
+            }else {
+                placePhoneLabel.text = "No Phone Available"
+            }
+            
+        }else {
+            placePhoneLabel.text = "No Phone Available"
+        }
+        
+        
+        
+        self.view.addSubview(infoView)
+        infoView.center = self.view.center
+
     }
     
     
+    @IBAction func dismissPressed(_ sender: UIButton) {
+        self.infoView.removeFromSuperview()
+        
+        
+        
+    }
+    
 
 
+    
+  
+    
+    // MARK:- General Functions
+    
+
+    
+    @objc func longPressFunction(sender:UITapGestureRecognizer) {
+        
+        if placePhoneLabel.text != "No Phone Available" {
+            var trimmedPhoneNumber = placePhoneLabel.text
+            
+            trimmedPhoneNumber = trimmedPhoneNumber!.components(separatedBy: .whitespaces).joined()
+            
+
+            if let phoneNumber = trimmedPhoneNumber   {
+                
+                    
+                    guard let number = URL(string: "tel://" + phoneNumber) else {return}
+                    
+                    let alert = UIAlertController(title: "Calling", message: "Are you Sure you want to Call \(trimmedPhoneNumber!)", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    
+                    
+                    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+                        
+                        action in UIApplication.shared.open(number)
+                    }))
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {
+                        
+                        action in print("No")
+                        
+                    }))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+            
+            
+        }
+        
+    }
+
+   
+    
+    
+    
+    
+    // MARK:- Loading Images Functions
     
     
     func loadFirstPhotoForPlace(placeID: String) {
@@ -152,6 +194,7 @@ class MapViewController: UIViewController {
             if let error = error {
                 // TODO: handle the error.
                 print("Error: \(error.localizedDescription)")
+                
             } else {
                 if let firstPhoto = photos?.results.first {
                     self.loadImageForMetadata(photoMetadata: firstPhoto)
@@ -168,7 +211,6 @@ class MapViewController: UIViewController {
                 print("Error: \(error.localizedDescription)")
                 self.currentLocationImage = nil
                 
-                
             } else {
                 self.currentLocationImage = photo;
                 
@@ -176,12 +218,46 @@ class MapViewController: UIViewController {
         })
     }
     
+    
+    
+    
+    // MARK:- Update View with New Place
+    
+    func updateViewToNewLocation(with place: GMSPlace){
+        
+        loadFirstPhotoForPlace(placeID: (place.placeID))
+        
+        mapView.clear()
+        searchController?.isActive = false
+       
+        currentLocation = place
+        
+        
+        CATransaction.begin()
+        CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
+ 
+        mapView.animate(to: GMSCameraPosition(target: place.coordinate, zoom: 16, bearing: 0, viewingAngle: 0))
+        CATransaction.commit()
+        
+        
+        let position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        let marker = GMSMarker(position: position)
+        marker.title = "\(place.name)"
+        marker.map = mapView
+        
+        
+        
+        locationLabel.text = "\(currentLocation!.name) "
+        locationLabel.backgroundColor = UIColor.white
+        addressView.isHidden = false
+        let locationLabelHeight = locationLabel.intrinsicContentSize.height + 35
+        mapView.padding = UIEdgeInsets(top: view.safeAreaInsets.top, left: 0,
+                                       bottom: locationLabelHeight, right: 0)
+        
+    }
 
     
 }
-
-
-
 
 
 // MARK: - GMSAutocompleteResultsViewControllerDelegate
@@ -190,38 +266,10 @@ class MapViewController: UIViewController {
         
         func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                                didAutocompleteWith place: GMSPlace) {
-            self.infoView.removeFromSuperview()
-            
-            searchController?.isActive = false
-            
-            currentLocation = place
-            loadFirstPhotoForPlace(placeID: (currentLocation?.placeID)!)
-            
-            mapView.clear()
 
-            CATransaction.begin()
-            CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
+            infoView.removeFromSuperview()
+            updateViewToNewLocation(with: place)
 
-            
-            mapView.animate(to: GMSCameraPosition(target: place.coordinate, zoom: 16, bearing: 0, viewingAngle: 0))
-            CATransaction.commit()
-            
-
-            let position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-            let marker = GMSMarker(position: position)
-            marker.title = "\(place.name)"
-            marker.map = mapView
-            
-            
-            
-            locationLabel.text = "\(currentLocation!.name) "
-            locationLabel.backgroundColor = UIColor.white
-            addressView.isHidden = false
-            let locationLabelHeight = locationLabel.intrinsicContentSize.height + 45
-            mapView.padding = UIEdgeInsets(top: view.safeAreaInsets.top, left: 0,
-                                                bottom: locationLabelHeight, right: 0)
-            
-            
             
           
         }
@@ -230,25 +278,23 @@ class MapViewController: UIViewController {
                                didFailAutocompleteWithError error: Error){
             // TODO: handle the error.
             print("Error: ", error.localizedDescription)
+            infoView.removeFromSuperview()
         }
         
         // Turn the network activity indicator on and off again.
         func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            infoView.removeFromSuperview()
         }
         
         func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            infoView.removeFromSuperview()
         }
         
-        
-       
-        
-        
+      
+
     }
-
-
-
 
 
 // MARK: - CLLocationManagerDelegate
