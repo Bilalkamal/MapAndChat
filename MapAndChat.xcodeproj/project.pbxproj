@@ -17,6 +17,10 @@
 		9C77D6932076C1FB00718F81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C77D6922076C1FB00718F81 /* Assets.xcassets */; };
 		9C77D6962076C1FB00718F81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C77D6942076C1FB00718F81 /* LaunchScreen.storyboard */; };
 		9C83D9F8207A16990067B9B0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83D9F7207A16990067B9B0 /* MapViewController.swift */; };
+		9C83D9FC207CFC820067B9B0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83D9FB207CFC820067B9B0 /* ChatViewController.swift */; };
+		9C83DA01207CFE4E0067B9B0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83DA00207CFE4E0067B9B0 /* Message.swift */; };
+		9C83DA05207CFE980067B9B0 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C83DA03207CFE970067B9B0 /* MessageCell.xib */; };
+		9C83DA06207CFE980067B9B0 /* CustomMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83DA04207CFE970067B9B0 /* CustomMessageCell.swift */; };
 		9CA400202078E61600BA2803 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CA4001F2078E61600BA2803 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +38,10 @@
 		9C77D6952076C1FB00718F81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C77D6972076C1FB00718F81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C83D9F7207A16990067B9B0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9C83D9FB207CFC820067B9B0 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		9C83DA00207CFE4E0067B9B0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		9C83DA03207CFE970067B9B0 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		9C83DA04207CFE970067B9B0 /* CustomMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageCell.swift; sourceTree = "<group>"; };
 		9CA4001F2078E61600BA2803 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C98C241AD5DC71BCCD90E0DE /* Pods_MapAndChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapAndChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,6 +88,7 @@
 		9C77D68A2076C1FB00718F81 /* MapAndChat */ = {
 			isa = PBXGroup;
 			children = (
+				9C83D9FF207CFE420067B9B0 /* Model */,
 				9C77D69D2076C6A600718F81 /* View */,
 				9C77D69E2076C6B000718F81 /* Controller */,
 				9C77D6922076C1FB00718F81 /* Assets.xcassets */,
@@ -94,6 +103,7 @@
 			children = (
 				9C77D68F2076C1FB00718F81 /* Main.storyboard */,
 				9C77D6942076C1FB00718F81 /* LaunchScreen.storyboard */,
+				9C83DA02207CFE8A0067B9B0 /* CustomCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -107,8 +117,26 @@
 				9C0CFAD52077BEC800AB4C03 /* LoginViewController.swift */,
 				9C0CFAD92077C3B200AB4C03 /* MainViewController.swift */,
 				9C83D9F7207A16990067B9B0 /* MapViewController.swift */,
+				9C83D9FB207CFC820067B9B0 /* ChatViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C83D9FF207CFE420067B9B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C83DA00207CFE4E0067B9B0 /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C83DA02207CFE8A0067B9B0 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				9C83DA04207CFE970067B9B0 /* CustomMessageCell.swift */,
+				9C83DA03207CFE970067B9B0 /* MessageCell.xib */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		EAF12C2DD85881F72DC4FDA7 /* Frameworks */ = {
@@ -181,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C83DA05207CFE980067B9B0 /* MessageCell.xib in Resources */,
 				9C77D6962076C1FB00718F81 /* LaunchScreen.storyboard in Resources */,
 				9CA400202078E61600BA2803 /* GoogleService-Info.plist in Resources */,
 				9C77D6932076C1FB00718F81 /* Assets.xcassets in Resources */,
@@ -217,6 +246,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MapAndChat/Pods-MapAndChat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
@@ -229,6 +259,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
@@ -274,10 +305,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C83DA06207CFE980067B9B0 /* CustomMessageCell.swift in Sources */,
 				9C0CFAD62077BEC800AB4C03 /* LoginViewController.swift in Sources */,
 				9C83D9F8207A16990067B9B0 /* MapViewController.swift in Sources */,
 				9C0CFAD42077BEBB00AB4C03 /* RegisterViewController.swift in Sources */,
+				9C83D9FC207CFC820067B9B0 /* ChatViewController.swift in Sources */,
 				9C77D68E2076C1FB00718F81 /* WelcomeViewController.swift in Sources */,
+				9C83DA01207CFE4E0067B9B0 /* Message.swift in Sources */,
 				9C77D68C2076C1FB00718F81 /* AppDelegate.swift in Sources */,
 				9C0CFADA2077C3B200AB4C03 /* MainViewController.swift in Sources */,
 			);

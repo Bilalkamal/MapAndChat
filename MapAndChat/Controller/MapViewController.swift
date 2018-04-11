@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
+import ChameleonFramework
 
 
 class MapViewController: UIViewController, UISearchControllerDelegate, UISearchBarDelegate {
@@ -42,6 +43,8 @@ class MapViewController: UIViewController, UISearchControllerDelegate, UISearchB
    
     
     // MARK:- viewDidLoad
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,9 +53,10 @@ class MapViewController: UIViewController, UISearchControllerDelegate, UISearchB
 
         setupGoogleSearch()
 
-        infoView.layer.cornerRadius = 5
-
-        addressView.isHidden = true
+        navigationController?.navigationBar.tintColor = UIColor.flatSkyBlueDark
+        navigationController?.navigationBar.backgroundColor = UIColor.flatSand
+        setupView()
+        
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.longPressFunction))
         placePhoneLabel.isUserInteractionEnabled = true
@@ -61,7 +65,15 @@ class MapViewController: UIViewController, UISearchControllerDelegate, UISearchB
     }
     
     
-  
+    fileprivate func setupView() {
+        locationLabel.textColor = UIColor.flatSkyBlueDark
+        
+        infoView.layer.cornerRadius = 15
+        infoView.clipsToBounds = true
+        
+        
+        addressView.isHidden = true
+    }
     
     
     

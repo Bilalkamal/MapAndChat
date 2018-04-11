@@ -10,12 +10,18 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import GoogleSignIn
+import ChameleonFramework
 
 class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var loginLabel: UILabel!
+    
      let googleButton = GIDSignInButton()
     
     override func viewDidLoad() {
@@ -24,12 +30,21 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = false
         createGoogleButton()
+        
+        navigationController?.navigationBar.tintColor = UIColor.flatBlueDark
+        view.backgroundColor = UIColor.flatSandDark
+        
+        loginButton.backgroundColor = UIColor.flatBlueDark
+        loginLabel.textColor = UIColor.flatBlueDark
+        
+        
+        
     }
 
     
     func createGoogleButton(){
        
-        googleButton.frame = CGRect(x: -4, y: 262, width: view.frame.width + 10, height: 40)
+        googleButton.frame = CGRect(x: -4, y: 327, width: view.frame.width + 10, height: 40)
         view.addSubview(googleButton)
         
         GIDSignIn.sharedInstance().uiDelegate = self

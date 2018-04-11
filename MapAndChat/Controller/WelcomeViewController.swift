@@ -8,13 +8,15 @@
 
 import UIKit
 import GoogleSignIn
-
+import ChameleonFramework
 
 
 
 class WelcomeViewController: UIViewController,GIDSignInDelegate {
     
+    @IBOutlet weak var registerButton: UIButton!
     
+    @IBOutlet weak var loginButton: UIButton!
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
@@ -25,8 +27,16 @@ class WelcomeViewController: UIViewController,GIDSignInDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+      
         self.navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.backgroundColor = UIColor.flatSand
+        view.backgroundColor = UIColor.flatSand
+        registerButton.backgroundColor = UIColor.flatRedDark
+        loginButton.backgroundColor = UIColor.flatBlueDark
+        
+        
+        
+        
     }
     
     
