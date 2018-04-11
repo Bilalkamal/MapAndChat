@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CustomMessageCell: UITableViewCell {
 
 
@@ -15,7 +16,10 @@ class CustomMessageCell: UITableViewCell {
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var messageBody: UILabel!
     @IBOutlet var senderUsername: UILabel!
-    @IBOutlet weak var messageDate: UILabel!
+    @IBOutlet weak var cellView: UIView!
+    
+    
+    
     
     
     override func awakeFromNib() {

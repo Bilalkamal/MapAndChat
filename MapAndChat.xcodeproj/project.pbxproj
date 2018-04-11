@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		29A093B3CE5016C5CDA9673D /* Pods_MapAndChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C241AD5DC71BCCD90E0DE /* Pods_MapAndChat.framework */; };
+		9C088FC3207E4DA7008BD735 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C088FC2207E4DA7008BD735 /* Assets.xcassets */; };
 		9C0CFAD42077BEBB00AB4C03 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CFAD32077BEBB00AB4C03 /* RegisterViewController.swift */; };
 		9C0CFAD62077BEC800AB4C03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CFAD52077BEC800AB4C03 /* LoginViewController.swift */; };
 		9C0CFADA2077C3B200AB4C03 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CFAD92077C3B200AB4C03 /* MainViewController.swift */; };
 		9C77D68C2076C1FB00718F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77D68B2076C1FB00718F81 /* AppDelegate.swift */; };
 		9C77D68E2076C1FB00718F81 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77D68D2076C1FB00718F81 /* WelcomeViewController.swift */; };
 		9C77D6912076C1FB00718F81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C77D68F2076C1FB00718F81 /* Main.storyboard */; };
-		9C77D6932076C1FB00718F81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C77D6922076C1FB00718F81 /* Assets.xcassets */; };
 		9C77D6962076C1FB00718F81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C77D6942076C1FB00718F81 /* LaunchScreen.storyboard */; };
 		9C83D9F8207A16990067B9B0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83D9F7207A16990067B9B0 /* MapViewController.swift */; };
 		9C83D9FC207CFC820067B9B0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83D9FB207CFC820067B9B0 /* ChatViewController.swift */; };
@@ -27,6 +27,7 @@
 /* Begin PBXFileReference section */
 		24DE3902125B7CA22959F47A /* Pods-MapAndChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapAndChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapAndChat/Pods-MapAndChat.release.xcconfig"; sourceTree = "<group>"; };
 		5ABCCFF8276D0D2EAEF5A43E /* Pods-MapAndChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapAndChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapAndChat/Pods-MapAndChat.debug.xcconfig"; sourceTree = "<group>"; };
+		9C088FC2207E4DA7008BD735 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C0CFAD32077BEBB00AB4C03 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9C0CFAD52077BEC800AB4C03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C0CFAD92077C3B200AB4C03 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		9C77D68B2076C1FB00718F81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C77D68D2076C1FB00718F81 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		9C77D6902076C1FB00718F81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9C77D6922076C1FB00718F81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C77D6952076C1FB00718F81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C77D6972076C1FB00718F81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C83D9F7207A16990067B9B0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 				9C83D9FF207CFE420067B9B0 /* Model */,
 				9C77D69D2076C6A600718F81 /* View */,
 				9C77D69E2076C6B000718F81 /* Controller */,
-				9C77D6922076C1FB00718F81 /* Assets.xcassets */,
+				9C088FC2207E4DA7008BD735 /* Assets.xcassets */,
 				9C77D6972076C1FB00718F81 /* Info.plist */,
 				9CA4001F2078E61600BA2803 /* GoogleService-Info.plist */,
 			);
@@ -212,8 +212,8 @@
 				9C83DA05207CFE980067B9B0 /* MessageCell.xib in Resources */,
 				9C77D6962076C1FB00718F81 /* LaunchScreen.storyboard in Resources */,
 				9CA400202078E61600BA2803 /* GoogleService-Info.plist in Resources */,
-				9C77D6932076C1FB00718F81 /* Assets.xcassets in Resources */,
 				9C77D6912076C1FB00718F81 /* Main.storyboard in Resources */,
+				9C088FC3207E4DA7008BD735 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

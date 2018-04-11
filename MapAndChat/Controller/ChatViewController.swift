@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import ChameleonFramework
 
+
 class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     var messageArray : [Message] = [Message]()
@@ -44,31 +45,59 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         
         messageTableView.separatorStyle = .none
+        messageTableView.backgroundColor = UIColor.flatWhite
+        navigationController?.navigationBar.tintColor = UIColor.flatGreenDark
+        
+        
         
     }
+    
+    
+    
+  
     
 
     
     //MARK: - TableView DataSource Methods
-    
-    
-    
+
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
         
+        
+        cell.cellView.backgroundColor = UIColor.flatWhite
+        
         cell.messageBody.text = messageArray[indexPath.row].messageBody
         cell.senderUsername.text = messageArray[indexPath.row].sender
-        cell.avatarImageView.image = UIImage(named: "egg")
+        
+        let defaultImage = UIImage(named: "Default Photo")
+        
+        cell.avatarImageView.layer.cornerRadius = cell.avatarImageView.frame.height / 2
+
         
         if cell.senderUsername.text == Auth.auth().currentUser?.email as String! {
             
-            cell.avatarImageView.backgroundColor = UIColor.green
-            cell.messageBackground.backgroundColor = UIColor.blue
+            cell.avatarImageView.backgroundColor = UIColor.yellow
+            cell.messageBackground.backgroundColor = UIColor.flatGreen
+            if let userImageUrl = Auth.auth().currentUser?.photoURL {
+                
+                
+                let url = userImageUrl
+                
+                let data = try? Data(contentsOf: url)
+                cell.avatarImageView.image = UIImage(data: data!)
+                
+                
+                
+            }else {
+                cell.avatarImageView.image = defaultImage
+            }
+            
         } else {
-            cell.avatarImageView.backgroundColor = UIColor.red
-            cell.messageBackground.backgroundColor = UIColor.gray
+            cell.avatarImageView.image = defaultImage
+            cell.messageBackground.backgroundColor = UIColor.flatGray
+            cell.messageBody.textColor = UIColor.flatBlackDark
         }
         
         return cell
@@ -141,34 +170,52 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     
     
-    
-
-    @IBAction func sendPressed(_ sender: Any) {
-        
+    func sendOrPressedAction(){
         messageTextField.endEditing(true)
-        
-
         
         messageTextField.isEnabled = false
         sendButton.isEnabled = false
         
-        let messageDB = Database.database().reference().child("Messages")
         
-        let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextField.text!]
-        
-        messageDB.childByAutoId().setValue(messageDictionary) { (error, reference) in
+        if let message = messageTextField.text, message.count > 0  {
             
-            if error != nil {
-                print(error!)
-            } else {
-                print("Message Saved")
-                self.messageTextField.isEnabled = true
-                self.messageTextField.text = ""
-                self.sendButton.isEnabled = true
-               
+            let messageDB = Database.database().reference().child("Messages")
+            
+            let messageDictionary  = ["Sender": Auth.auth().currentUser?.email, "MessageBody": message]
+
+            messageDB.childByAutoId().setValue(messageDictionary) { (error, reference) in
+                
+                if error != nil {
+                    print(error!)
+                } else {
+                    print("Message Saved")
+                    self.messageTextField.isEnabled = true
+                    self.messageTextField.text = ""
+                    self.sendButton.isEnabled = true
+                    
+                }
+                
             }
-            
+        }else {
+            messageTextField.isEnabled = true
+            messageTextField.text = ""
+            sendButton.isEnabled = true
+            return
         }
+        
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        sendOrPressedAction()
+        return true
+    }
+    
+
+    @IBAction func sendPressed(_ sender: Any) {
+        
+       sendOrPressedAction()
+        
         
         
     }

@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoMakr_MapAndChat" translatesAutoresizingMaskIntoConstraints="NO" id="nxW-6c-M38">
-                                <rect key="frame" x="0.0" y="232.5" width="375" height="202"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="202" id="Mgx-DD-Cye"/>
-                                    <constraint firstAttribute="width" constant="375" id="rCj-cl-QUs"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-pC-ZDl">
                                 <rect key="frame" x="0.0" y="482" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -49,9 +42,16 @@
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qUX-iI-s5v"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoMakr_MapAndChat" translatesAutoresizingMaskIntoConstraints="NO" id="nxW-6c-M38">
+                                <rect key="frame" x="57" y="249" width="260" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Mgx-DD-Cye"/>
+                                    <constraint firstAttribute="width" constant="260" id="rCj-cl-QUs"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="nxW-6c-M38" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LOb-h9-oBd"/>
+                            <constraint firstItem="nxW-6c-M38" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-14.5" id="LOb-h9-oBd"/>
                             <constraint firstItem="nxW-6c-M38" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tiE-n3-t9l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -184,10 +184,6 @@
                                     <action selector="mapButtonPressed:" destination="cvm-fr-8fs" eventType="touchUpInside" id="w6W-qS-b0v"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoMakr_MapAndChat" translatesAutoresizingMaskIntoConstraints="NO" id="bbf-5j-09I">
-                                <rect key="frame" x="0.0" y="64" width="375" height="234"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9U-65-Unz">
                                 <rect key="frame" x="16" y="426" width="343" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -200,6 +196,10 @@
                                     <action selector="chatButtonPressed:" destination="cvm-fr-8fs" eventType="touchUpInside" id="G21-HE-gn1"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoMakr_MapAndChat" translatesAutoresizingMaskIntoConstraints="NO" id="bbf-5j-09I">
+                                <rect key="frame" x="84" y="102" width="207" height="132"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RzZ-hm-5DH"/>
                     </view>
@@ -405,7 +405,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.89163198591619397" green="0.90046002538071068" blue="0.90046002538071068" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="wDW-j9-tbP" firstAttribute="top" secondItem="F6G-hE-VjN" secondAttribute="top" constant="10" id="9KG-TC-HLy"/>
                                     <constraint firstItem="5KT-oM-xiV" firstAttribute="top" secondItem="F6G-hE-VjN" secondAttribute="top" constant="10" id="K2Z-64-oWc"/>
@@ -561,9 +561,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LogoMakr_MapAndChat" width="600" height="330"/>
+        <image name="LogoMakr_MapAndChat" width="600" height="439"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EMn-ZM-9G5"/>
+        <segue reference="NHG-F2-OdH"/>
     </inferredMetricsTieBreakers>
 </document>

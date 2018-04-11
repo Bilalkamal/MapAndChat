@@ -18,12 +18,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KKK-He-xNm">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KKK-He-xNm">
                         <rect key="frame" x="0.0" y="10" width="53" height="53"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="53" id="V9u-bj-2Ih"/>
                             <constraint firstAttribute="width" constant="53" id="cfG-zK-5xi"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yxz-95-vHl">
                         <rect key="frame" x="59" y="10" width="251" height="60"/>
@@ -70,6 +80,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImageView" destination="KKK-He-xNm" id="Fn7-YS-QGj"/>
+                <outlet property="cellView" destination="2SS-CF-kBl" id="fKt-gH-3rK"/>
                 <outlet property="messageBackground" destination="Yxz-95-vHl" id="i3E-B9-bCM"/>
                 <outlet property="messageBody" destination="Ael-H3-UuV" id="kXz-0y-fp3"/>
                 <outlet property="senderUsername" destination="khv-tc-S9N" id="9FT-43-C9p"/>

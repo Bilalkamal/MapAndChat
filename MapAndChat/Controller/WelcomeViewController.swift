@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import Firebase
 import ChameleonFramework
 
 
@@ -46,7 +47,7 @@ class WelcomeViewController: UIViewController,GIDSignInDelegate {
         
         
         
-        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() || Auth.auth().currentUser != nil{
             
             self.performSegue(withIdentifier: "goToMainScreen", sender: self)
 

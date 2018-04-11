@@ -61,6 +61,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
         SVProgressHUD.show()
         if error != nil {
             print("Failed to Sign in to Google:", error)
+            SVProgressHUD.dismiss()
             return
         }
        
@@ -72,6 +73,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
         let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
         Auth.auth().signIn(with: credentials) { (user, error) in
             if error != nil {
+                SVProgressHUD.dismiss()
                 print("Failed to Signin to Google with credintials", error!)
             }
             else {
@@ -96,10 +98,10 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegat
                 print("error signing in", error!)
                 SVProgressHUD.dismiss()
             }else {
-                SVProgressHUD.dismiss()
+                
                 self.performSegue(withIdentifier: "goToMainScreen", sender: self)
             }
-            
+            SVProgressHUD.dismiss()
         }
         
         
